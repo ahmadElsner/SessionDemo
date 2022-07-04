@@ -19,23 +19,25 @@ class Model{
     }
 }
 
+var modelArr : [Model] = [Model(name: "jay", desc: "", img: "img1"),
+                          Model(name: "prakash", desc: "prakash desk dygfydhfgfhdfghdfdhfhhfdvsvcvscvvcshgfdhfdfcvcvvccvhdhfvcvccdvcsdhdcdcdhdsvccvcvcdcvvcsvcvvcvvcvvcvcvcvcvcvhfdhdfvcvcvcvc", img: "img2"),
+                          Model(name: "raj", desc: "raj desc", img: "img3"),
+                          Model(name: "deep", desc: "deep desc", img: "img4"),
+                          Model(name: "jay", desc: "", img: "img1"),
+                          Model(name: "prakash", desc: "prakash desk", img: "img2"),
+                          Model(name: "Abhishek", desc: "Abhishek Desc", img: "img3"),
+                          Model(name: "raj", desc: "raj desc", img: "img3"),
+                          Model(name: "deep", desc: "deep desc", img: "img4"),
+                          Model(name: "jay", desc: "", img: "img1"),
+                          Model(name: "prakash", desc: "prakash desk", img: "img2"),
+                          Model(name: "Abhishek", desc: "Abhishek Desc", img: "img3")
+]
+
 class TableViewVC: UIViewController {
     
     @IBOutlet var tblView: UITableView!
     
-    var modelArr : [Model] = [Model(name: "jay", desc: "", img: "img1"),
-                              Model(name: "prakash", desc: "prakash desk dygfydhfgfhdfghdfdhfhhfdvsvcvscvvcshgfdhfdfcvcvvccvhdhfvcvccdvcsdhdcdcdhdsvccvcvcdcvvcsvcvvcvvcvvcvcvcvcvcvhfdhdfvcvcvcvc", img: "img2"),
-                              Model(name: "raj", desc: "raj desc", img: "img3"),
-                              Model(name: "deep", desc: "deep desc", img: "img4"),
-                              Model(name: "jay", desc: "", img: "img1"),
-                              Model(name: "prakash", desc: "prakash desk", img: "img2"),
-                              Model(name: "Abhishek", desc: "Abhishek Desc", img: "img3"),
-                              Model(name: "raj", desc: "raj desc", img: "img3"),
-                              Model(name: "deep", desc: "deep desc", img: "img4"),
-                              Model(name: "jay", desc: "", img: "img1"),
-                              Model(name: "prakash", desc: "prakash desk", img: "img2"),
-                              Model(name: "Abhishek", desc: "Abhishek Desc", img: "img3")
-                             ]
+    
     
     var dict : [[String:Any]] = [["name":"jay","desc":"jay Desc"],
                                ["name":"prakash","desc":"prakash Desc"],
@@ -143,6 +145,105 @@ extension TableViewVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+    
+    
+    
+//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+    
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        if editingStyle == .delete{
+////            modelArr.remove(at: indexPath.row)
+////            self.tblView.reloadData()
+//
+//            let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this data?", preferredStyle: .alert)
+//
+//
+//            let delAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+//                modelArr.remove(at: indexPath.row)
+//                self.tblView.reloadData()
+//            }
+//
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//
+//            alert.addAction(delAction)
+//            alert.addAction(cancelAction)
+//
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//        else if editingStyle == .insert{
+//
+//        }
+//
+//    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // delete item at indexPath
+            
+                        let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this data?", preferredStyle: .actionSheet)
+            
+            
+                        let delAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                            modelArr.remove(at: indexPath.row)
+                            self.tblView.reloadData()
+                        }
+            
+                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+                        alert.addAction(delAction)
+                        alert.addAction(cancelAction)
+            
+                        self.present(alert, animated: true, completion: nil)
+        }
+
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            // share item at indexPath
+            
+            let alert = UIAlertController(title: "Edit", message: "do you want to edit some data?", preferredStyle: .alert)
+            
+            let canceAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: "Save", style: .default) { save in
+                // Do what you want to save.
+                
+            let txtTitle = alert.textFields?[0] as? UITextField ?? UITextField()
+            let txtDesc = alert.textFields?[1] as? UITextField ?? UITextField()
+                
+                
+                print("Title:\(txtTitle.text ?? "")")
+                print("Description:\(txtDesc.text ?? "")")
+                
+                modelArr[indexPath.row].name = txtTitle.text ?? ""
+                modelArr[indexPath.row].desc = txtDesc.text ?? ""
+                self.tblView.reloadData()
+                
+            }
+            
+            alert.addTextField { txtTitle in
+                txtTitle.placeholder = "Title"
+                txtTitle.text = modelArr[indexPath.row].name
+                
+            }
+            
+            alert.addTextField { txtDesc in
+                txtDesc.placeholder = "Description"
+                txtDesc.text = modelArr[indexPath.row].desc
+                
+            }
+            
+            alert.addAction(canceAction)
+            alert.addAction(saveAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+
+        edit.backgroundColor = .systemMint
+
+        return [delete, edit]
     }
     
 }

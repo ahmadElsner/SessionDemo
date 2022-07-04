@@ -9,6 +9,9 @@ import UIKit
 
 class HeightTblCell: UITableViewCell {
 
+    @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var lblDescription: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

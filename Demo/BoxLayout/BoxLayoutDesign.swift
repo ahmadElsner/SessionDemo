@@ -11,6 +11,7 @@ class BoxLayoutDesign: UIViewController , UICollectionViewDelegate , UICollectio
     @IBOutlet var BoxClnView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Box Layout UI"
         self.BoxClnView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
        
         BoxClnView.delegate = self
