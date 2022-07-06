@@ -63,12 +63,22 @@ import UIKit
 //
 //}
 
+enum List{
+    case TableView
+    case CollectionView
+    case BoxLayout
+    case AutoLayout
+}
+
 class ViewController: UIViewController {
     
-    @IBOutlet var btn : UIButton!
+    @IBOutlet var btn : UIButton?
     @IBOutlet var lblWelcome: UILabel!
     @IBOutlet var txtSomeText: UITextField!
     @IBOutlet var imgViewProfile: UIImageView!
+    @IBOutlet var tblViewListing: UITableView!
+    
+    var arrList : [List] = [.TableView,.CollectionView,.BoxLayout,.AutoLayout]
     
     
     @IBAction func BtnTapCalled(_ sender: UIButton) {
@@ -85,10 +95,13 @@ class ViewController: UIViewController {
         
         self.title = "Title"
         
-        btn.setTitle("Go To TableView", for: .normal)
+        btn?.setTitle("Go To TableView", for: .normal)
         
         imgViewProfile.image = UIImage(named: "img")
         imgViewProfile.layer.cornerRadius = imgViewProfile.frame.size.height/2
+        
+        self.tblViewListing.delegate = self
+        self.tblViewListing.dataSource = self
 
     }
 
@@ -106,3 +119,39 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: UITableView Delegate and Datsource
+
+extension ViewController:UITableViewDelegate,UITableViewDataSource{
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        arrList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        cell.textLabel?.text = "\(arrList[indexPath.row])"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let object = arrList[indexPath.row]
+        var vc : UIViewController?
+        if object == .TableView{
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "TableViewVC") as? TableViewVC
+        }else if object == .CollectionView{
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "CollectionView") as? CollectionView
+        }else if object == .BoxLayout{
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "BoxLayoutDesign") as? BoxLayoutDesign
+        }else if object == .AutoLayout{
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "AutoLayoutVC") as? AutoLayoutVC
+        }
+        self.navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
+    }
+    
+}
