@@ -68,6 +68,7 @@ enum List{
     case CollectionView
     case BoxLayout
     case AutoLayout
+    case UIPickerView
 }
 
 class ViewController: UIViewController {
@@ -78,7 +79,7 @@ class ViewController: UIViewController {
     @IBOutlet var imgViewProfile: UIImageView!
     @IBOutlet var tblViewListing: UITableView!
     
-    var arrList : [List] = [.TableView,.CollectionView,.BoxLayout,.AutoLayout]
+    var arrList : [List] = [.TableView,.CollectionView,.BoxLayout,.AutoLayout,.UIPickerView]
     
     
     @IBAction func BtnTapCalled(_ sender: UIButton) {
@@ -142,15 +143,25 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let object = arrList[indexPath.row]
         var vc : UIViewController?
-        if object == .TableView{
+        
+        switch object {
+        case .TableView:
             vc = self.storyboard?.instantiateViewController(withIdentifier: "TableViewVC") as? TableViewVC
-        }else if object == .CollectionView{
+            break
+        case .CollectionView:
             vc = self.storyboard?.instantiateViewController(withIdentifier: "CollectionView") as? CollectionView
-        }else if object == .BoxLayout{
+            break
+        case .BoxLayout:
             vc = self.storyboard?.instantiateViewController(withIdentifier: "BoxLayoutDesign") as? BoxLayoutDesign
-        }else if object == .AutoLayout{
+            break
+        case .AutoLayout:
             vc = self.storyboard?.instantiateViewController(withIdentifier: "AutoLayoutVC") as? AutoLayoutVC
+            break
+        case .UIPickerView:
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "PickerViewVC") as? PickerViewVC
+            break
         }
+        
         self.navigationController?.pushViewController(vc ?? UIViewController(), animated: true)
     }
     

@@ -623,6 +623,57 @@
             </objects>
             <point key="canvasLocation" x="4718.840579710145" y="28.794642857142854"/>
         </scene>
+        <!--Picker ViewVC-->
+        <scene sceneID="fkd-4Y-DB7">
+            <objects>
+                <viewController storyboardIdentifier="PickerViewVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gs2-z3-ljC" customClass="PickerViewVC" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8lt-1s-JAt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4u-Pb-Qbc">
+                                <rect key="frame" x="0.0" y="646" width="414" height="216"/>
+                                <color key="backgroundColor" red="0.23931324758360459" green="0.92685680332739151" blue="0.41733499276771796" alpha="0.66225165562913912" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-mC-yIw">
+                                <rect key="frame" x="148.66666666666666" y="418" width="116.99999999999997" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="TextField" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYM-mn-5jm">
+                                <rect key="frame" x="0.0" y="318" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eF9-j8-f5y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="c9w-Xz-EG1"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="c9w-Xz-EG1" firstAttribute="trailing" secondItem="bYM-mn-5jm" secondAttribute="trailing" id="1bE-9F-hVH"/>
+                            <constraint firstItem="c9w-Xz-EG1" firstAttribute="trailing" secondItem="Z4u-Pb-Qbc" secondAttribute="trailing" id="A4K-Pe-l3W"/>
+                            <constraint firstItem="Z4u-Pb-Qbc" firstAttribute="leading" secondItem="c9w-Xz-EG1" secondAttribute="leading" id="OkS-WW-eZQ"/>
+                            <constraint firstItem="4jU-mC-yIw" firstAttribute="centerY" secondItem="8lt-1s-JAt" secondAttribute="centerY" id="PTx-d4-HP2"/>
+                            <constraint firstItem="Z4u-Pb-Qbc" firstAttribute="centerX" secondItem="8lt-1s-JAt" secondAttribute="centerX" id="SnJ-5y-zbw"/>
+                            <constraint firstItem="4jU-mC-yIw" firstAttribute="top" secondItem="bYM-mn-5jm" secondAttribute="bottom" constant="50" id="i27-h0-QZo"/>
+                            <constraint firstItem="c9w-Xz-EG1" firstAttribute="bottom" secondItem="Z4u-Pb-Qbc" secondAttribute="bottom" id="jLm-YX-ql9"/>
+                            <constraint firstItem="4jU-mC-yIw" firstAttribute="centerX" secondItem="8lt-1s-JAt" secondAttribute="centerX" id="jfw-1i-fc2"/>
+                            <constraint firstItem="bYM-mn-5jm" firstAttribute="leading" secondItem="c9w-Xz-EG1" secondAttribute="leading" id="xza-qM-OIb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lblValue" destination="4jU-mC-yIw" id="PeG-Cn-LWU"/>
+                        <outlet property="pickerView" destination="Z4u-Pb-Qbc" id="DQZ-ey-Cqs"/>
+                        <outlet property="txtField" destination="bYM-mn-5jm" id="6rK-J8-KMi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ef1-Qw-1Tt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5430" y="34"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="DF4-Qx-JXw">
             <objects>

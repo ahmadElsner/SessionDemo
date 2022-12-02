@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		62194F1128743BDD009C60FB /* AutoLayoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62194F1028743BDC009C60FB /* AutoLayoutVC.swift */; };
+		626065852876DD3400656FC7 /* PickerViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626065842876DD3400656FC7 /* PickerViewVC.swift */; };
 		6285147D286C50EF00DA1780 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6285147C286C50EF00DA1780 /* CollectionView.swift */; };
 		62851480286C520F00DA1780 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6285147F286C520F00DA1780 /* CollectionViewCell.swift */; };
 		628C571B286B01ED00457EFC /* HeightTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628C571A286B01ED00457EFC /* HeightTblCell.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		62194F1028743BDC009C60FB /* AutoLayoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutVC.swift; sourceTree = "<group>"; };
+		626065842876DD3400656FC7 /* PickerViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewVC.swift; sourceTree = "<group>"; };
 		6285147C286C50EF00DA1780 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		6285147F286C520F00DA1780 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		628C571A286B01ED00457EFC /* HeightTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeightTblCell.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 				62194F1028743BDC009C60FB /* AutoLayoutVC.swift */,
 			);
 			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		626065832876DD1500656FC7 /* UIPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				626065842876DD3400656FC7 /* PickerViewVC.swift */,
+			);
+			path = UIPickerView;
 			sourceTree = "<group>";
 		};
 		6285147B286C50C300DA1780 /* TableView */ = {
@@ -102,6 +112,7 @@
 		62D46347286072B500DC23BF /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				626065832876DD1500656FC7 /* UIPickerView */,
 				62194F0F28743BB0009C60FB /* AutoLayout */,
 				62D46348286072B500DC23BF /* AppDelegate.swift */,
 				62D4634A286072B500DC23BF /* SceneDelegate.swift */,
@@ -204,6 +215,7 @@
 				62D4634D286072B500DC23BF /* ViewController.swift in Sources */,
 				6291E893286470A900201677 /* TblViewCell.swift in Sources */,
 				62851480286C520F00DA1780 /* CollectionViewCell.swift in Sources */,
+				626065852876DD3400656FC7 /* PickerViewVC.swift in Sources */,
 				BF7581892872B0F400FB75CB /* BoxLayoutDesign.swift in Sources */,
 				6291E89128646F3F00201677 /* TableViewVC.swift in Sources */,
 				62D46349286072B500DC23BF /* AppDelegate.swift in Sources */,
