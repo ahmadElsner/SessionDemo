@@ -22,6 +22,8 @@ class PickerViewVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("test")
+        
         arrComponent = [arrname,arrDescription]
         
         txtField.inputView = pickerView
